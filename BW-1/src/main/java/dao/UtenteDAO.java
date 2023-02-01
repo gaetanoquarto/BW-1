@@ -1,22 +1,24 @@
 package dao;
 
+import entities.Abbonamento;
 import entities.Utente;
 import utils.JpaUtils;
 
-public class UtenteDAO extends JpaUtils{
+public class UtenteDAO extends JpaUtils {
+
 	public void save(Utente u) {
-
+		
 		try {
-
+			
 			t.begin();
 			em.persist(u);
 			t.commit();
-
-			System.out.println("Elemento inserito correttamente!");
-		} catch (Exception e) {
-			System.out.println("Errore nell'inserimento dell'Elemento");
+			
+			System.out.println( "Utente inserito correttamente" );
+		} catch(Exception e) {
+			System.out.println( "ERRORE durante l'inserimento dell'Utente!!" );
 		}
-
+		
 	}
 	
 	public Utente getUtenteById(long id) {
@@ -29,16 +31,17 @@ public class UtenteDAO extends JpaUtils{
 		return e;
 	}
 	
-	public static void updateUtenteById(long id) {
+	public static void updateUtenteById(long id, Abbonamento abbonamento) {
 		Utente u = em.find(Utente.class, id);
 		
 		if(u == null) {
-			System.out.println("Errore.");
+			System.out.println("Errore, questo utente non esiste!");
 			return;
 		}
 		
 		try {
 			u.setAbbonamentoattivo(true);
+			u.setAbbonamento(abbonamento);
 			
 			t.begin();
 			em.persist(u);
@@ -46,8 +49,9 @@ public class UtenteDAO extends JpaUtils{
 			
 			
 		} catch(Exception e1) {
-			System.out.println("Errore.");
+			System.out.println("Errore, abbonamento già attivo!");
 		}
 		
 	}
+	
 }

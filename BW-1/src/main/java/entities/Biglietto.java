@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="biglietti")
+@Table(name = "biglietti")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Biglietto extends TitoloDiViaggio{
-	
+public class Biglietto extends TitoloDiViaggio {
+
 	private LocalDate vidimazione;
 	private boolean timbrato = false;
 	
@@ -25,6 +25,5 @@ public class Biglietto extends TitoloDiViaggio{
 		this.vidimazione = vidimazione;
 		this.timbrato = timbrato;
 	}
-	
 	
 }

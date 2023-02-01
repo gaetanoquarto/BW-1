@@ -2,7 +2,7 @@ package entities;
 
 import java.time.LocalDate;
 
-import javax.persistence.DiscriminatorValue;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,14 +18,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="abbonamenti")
+@Table(name = "abbonamenti")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Abbonamento extends TitoloDiViaggio{
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "codice_utente")
+public class Abbonamento extends TitoloDiViaggio {
+
+	@OneToOne(mappedBy = "abbonamento")
 	private Utente utente;
 	private boolean validita = true;
 	@Enumerated(EnumType.STRING)
@@ -37,6 +36,5 @@ public class Abbonamento extends TitoloDiViaggio{
 		this.validita = validita;
 		this.durata = durata;
 	}
-	
 	
 }
