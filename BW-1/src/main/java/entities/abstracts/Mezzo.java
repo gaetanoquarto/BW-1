@@ -13,10 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import entities.Autobus;
+import entities.Biglietto;
 import entities.Tratta;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "mezzi")
@@ -37,12 +40,27 @@ abstract public class Mezzo {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "tratte_id", referencedColumnName = "tratta_id")
 	private Tratta tratta;
+	
+	private String numero;
+	private int bigliettiVidimati;
+	
+	
 
-	public Mezzo(int capienza, boolean inServizio, Tratta tratta) {
+
+	public Mezzo(int capienza, boolean inServizio, Tratta tratta, String numero) {
 		super();
 		this.capienza = capienza;
 		this.inServizio = inServizio;
 		this.tratta = tratta;
+		this.numero = numero;
+
 	}
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName().toUpperCase() + " " + numero +  " - Partenza: " + tratta.getPartenza() + " - Arrivo: " + tratta.getCapolinea();
+	}
+	
+	
 	
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Distributore;
 import entities.Utente;
 import entities.abstracts.Ticketing;
 import utils.JpaUtils;
@@ -73,6 +74,29 @@ public class TicketingDAO extends JpaUtils {
 		String stazione = ti.getLuogo();
 		
 		System.out.println("Sono stati emessi " + bigliettiEmessi + " biglietti e " + abbonamentiEmessi + " abbonamenti nella " + stazione);
+	}
+	
+	public static void checkDistributore(int id) {
+		Distributore d = em.find(Distributore.class, id);
+		int counter = d.getCounterBiglietti();
+		boolean inservizio = d.isInServizio();
+		if(counter == 0) {
+			d.setInServizio(false);
+			t.begin();
+			em.persist(d);
+			t.commit();
+			System.out.println("Il distributore di " + d.getLuogo() + " è fuori servizio.");
+			System.exit(0);
+		} else {
+			if (inservizio == false) {
+				d.setInServizio(true);
+				t.begin();
+				em.persist(d);
+				t.commit();
+			}
+			System.out.println("Hai scelto Stazione Tiburtina");
+			System.out.println("Benvenuto nel distributore");
+		}
 	}
 	
 }

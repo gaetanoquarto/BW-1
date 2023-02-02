@@ -2,6 +2,7 @@ package app;
 
 import java.time.LocalDate;
 
+import dao.MezzoDAO;
 import dao.TesseraDAO;
 import dao.TicketingDAO;
 import dao.TitoloDiViaggioDAO;
@@ -23,6 +24,7 @@ public class App {
 		//TicketingDAO.getTitoliEmessi(1);
 		//Menu.saveDistributore();
 		//Menu.saveRivenditore();
+		//MezzoDAO.conteggioBigliettiVidimati(LocalDate.now().minusDays(30), LocalDate.now().minusDays(10));
 		
 	}
 	
