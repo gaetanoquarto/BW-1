@@ -16,6 +16,7 @@ import dao.MezzoDAO;
 import dao.TesseraDAO;
 import dao.TicketingDAO;
 import dao.TitoloDiViaggioDAO;
+import dao.TrattaDAO;
 import dao.UtenteDAO;
 import entities.Abbonamento;
 import entities.Autobus;
@@ -91,6 +92,7 @@ public class Menu extends JpaUtils {
 				case (3):
 					scegliMezzo();
 					convalidaTicket();
+					TrattaDAO.tempoEffettivo(selectMezzo);
 					break;
 				default:
 					logger.error("Valore non presente nella lista!");
@@ -168,7 +170,6 @@ public class Menu extends JpaUtils {
 			for(int i = 0; i < mezzi.size(); i++) {
 				Mezzo mezzo = mezzi.get(i);
 				if(selectMezzo == mezzo.getMezzo_id()) {
-					MezzoDAO.conteggioCorseMezzo(selectMezzo);
 					System.out.println("Sei salito su " + mezzo.getClass().getSimpleName().toUpperCase() + " " + mezzo.getNumero());
 					break;
 				}
@@ -195,7 +196,6 @@ public class Menu extends JpaUtils {
 			for(int i = 0; i < mezzi.size(); i++) {
 				Mezzo mezzo = mezzi.get(i);
 				if(selectMezzo == mezzo.getMezzo_id()) {
-					MezzoDAO.conteggioCorseMezzo(selectMezzo);
 					System.out.println("Sei salito su " + mezzo.getClass().getSimpleName().toUpperCase() + " " + mezzo.getNumero());
 					break;
 				}
@@ -247,7 +247,7 @@ public class Menu extends JpaUtils {
 			} else {
 				int id = u.getAbbonamento().getTitolo_id();
 				
-				System.out.println("Rinnova tessera: ");
+				System.out.println("Rinnova Abbonamento: ");
 				System.out.println("1 - Settimanale");
 				System.out.println("2 - Mensile");
 				int periodo = sc.nextInt();
@@ -258,6 +258,7 @@ public class Menu extends JpaUtils {
 				a.setDataEmissione(LocalDate.now());
 				a.setDataScadenza(LocalDate.now().plusWeeks(1));
 				a.setValidita(true);
+				a.setDurata(Periodicita.SETTIMANALE);
 				t.begin();
 				em.persist(a);
 				t.commit();
@@ -268,6 +269,7 @@ public class Menu extends JpaUtils {
 				ab.setDataEmissione(LocalDate.now());
 				ab.setDataScadenza(LocalDate.now().plusMonths(1));
 				ab.setValidita(true);
+				ab.setDurata(Periodicita.MENSILE);
 				t.begin();
 				em.persist(ab);
 				t.commit();
@@ -277,7 +279,7 @@ public class Menu extends JpaUtils {
 					logger.error("Valore non presente nella lista!");
 					break;
 				}
-				System.out.println("Tessera rinnovata!");
+				System.out.println("Abbonamento rinnovato!");
 				
 			}
 		} else if (u.getAbbonamento() == null) {

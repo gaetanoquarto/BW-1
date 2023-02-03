@@ -56,7 +56,7 @@ abstract public class Mezzo {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName().toUpperCase() + " " + numero + " - Partenza: " + tratta.getPartenza() + " - Arrivo: " + tratta.getCapolinea();
+		return getClass().getSimpleName().toUpperCase() + " " + numero + " - Partenza: " + tratta.getPartenza() + " - Arrivo: " + tratta.getCapolinea() + " - durata media: " + tratta.getTempoPercorrenza();
 	}
 	
 }

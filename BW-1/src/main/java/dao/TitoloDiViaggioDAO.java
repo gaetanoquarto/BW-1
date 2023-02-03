@@ -80,6 +80,8 @@ public class TitoloDiViaggioDAO extends JpaUtils {
 				t.commit();
 				
 				System.out.println("Biglietto vidimato correttamente! Puoi partire.");
+				MezzoDAO.conteggioCorseMezzo(idMezzo);
+
 			} else {
 				System.out.println("Biglietto già utilizzato! Acquistane uno nuovo. Non puoi partire!");
 			}
@@ -89,6 +91,7 @@ public class TitoloDiViaggioDAO extends JpaUtils {
 			LocalDate validita = a.getDataScadenza();
 			if(validita.isAfter(LocalDate.now())) {
 				System.out.println("Abbonamento valido! Puoi partire.");
+				MezzoDAO.conteggioCorseMezzo(idMezzo);
 			} else {
 				System.out.println("Abboanmento scaduto! Non puoi partire.");
 				System.exit(0);
