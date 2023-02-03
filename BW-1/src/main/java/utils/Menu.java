@@ -42,7 +42,6 @@ public class Menu extends JpaUtils {
 	static final String ANSI_GREEN = "\033[0;32m";
 	static final String ANSI_YELLOW = "\033[1;33m";
 	static final String ANSI_BACKGROUND = "\u001B[41m";
-	// static boolean attivo = true;
 	static long nTessera;
 
 	static int mezzoId;
@@ -116,15 +115,15 @@ public class Menu extends JpaUtils {
 	}
 
 	public static void acquistaTessera() {
-		sc.nextLine();
 		System.out.println("Inserisci il tuo nome");
-		String nome = sc.nextLine();
+		String nome = sc.next();
+
 
 		System.out.println("Inserisci il tuo cognome");
-		String cognome = sc.nextLine();
+		String cognome = sc.next();
 
 		System.out.println("Inserisci la tua email");
-		String email = sc.nextLine();
+		String email = sc.next();
 
 		saveTessera(nome, cognome, email, LocalDate.now(), LocalDate.now().plusYears(1));
 
