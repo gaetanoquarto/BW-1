@@ -15,17 +15,25 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		Menu.runApp();
-
+		
 		//Gestionale.counter();
+		Menu.runApp();
+		
+		//TitoloDiViaggioDAO.conteggioTitoli(Biglietto.class, LocalDate.now(), LocalDate.now().plusDays(30));
+		//TicketingDAO.getTitoliEmessi(1);
+		//MezzoDAO.conteggioBigliettiVidimati(LocalDate.now(), LocalDate.now().plusDays(30));
+				
+
+		
+		
+		
+		
+		
 		//Gestionale.addMezzi();
 		
 		//Menu.saveDistributore();
 		//Menu.saveRivenditore();
 
-		//TitoloDiViaggioDAO.conteggioTitoli(Biglietto.class, LocalDate.now(), LocalDate.now().plusDays(30));
-		//TicketingDAO.getTitoliEmessi(1);
-		//MezzoDAO.conteggioBigliettiVidimati(LocalDate.now(), LocalDate.now().plusDays(30));
 		
 	}
 	

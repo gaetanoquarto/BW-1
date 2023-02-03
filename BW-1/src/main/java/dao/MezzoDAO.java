@@ -56,7 +56,7 @@ public class MezzoDAO extends JpaUtils {
 		t.begin();
 
 		
-		Query q = em.createQuery("UPDATE Mezzo m SET m.inServizio = false, m.inizioManutenzione = :startDate, m.fineManutenzione = :endDate, m.nCorse = 0 WHERE m.nCorse = 10");
+		Query q = em.createQuery("UPDATE Mezzo m SET m.inServizio = false, m.inizioManutenzione = :startDate, m.fineManutenzione = :endDate, m.nCorse = 0 WHERE m.nCorse >= 10");
 		q.setParameter("startDate", LocalDate.now());
 		q.setParameter("endDate", LocalDate.now().plusDays(1));
 		int rowAffected = q.executeUpdate();
