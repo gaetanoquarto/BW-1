@@ -1,7 +1,5 @@
 package utils;
 
-import java.util.HashSet;
-
 import dao.MezzoDAO;
 import dao.TrattaDAO;
 import entities.Autobus;

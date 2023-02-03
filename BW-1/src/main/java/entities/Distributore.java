@@ -19,7 +19,7 @@ public class Distributore extends Ticketing {
 
 	private boolean inServizio;
 
-	public Distributore(int bigliettiEmessi, String luogo, int counterBiglietti, boolean inServizio, int abbonamentiEmessi) {
+	public Distributore(int bigliettiEmessi, String luogo, int counterBiglietti, int abbonamentiEmessi , boolean inServizio) {
 		super(bigliettiEmessi, luogo, counterBiglietti, abbonamentiEmessi);
 		this.inServizio = inServizio;
 	}

@@ -19,7 +19,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Autobus extends Mezzo {
 	
-
 	public Autobus(int capienza, boolean inServizio, Tratta tratta, String numero) {
 		super(capienza, inServizio, tratta, numero);
 	}

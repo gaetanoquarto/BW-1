@@ -41,6 +41,7 @@ public class TicketingDAO extends JpaUtils {
 			System.out.println("Errore!");
 		}
 	}
+	
 	public static void countAbbonamenti(int id) {
 		Ticketing ti = em.find(Ticketing.class, id);
 		
@@ -65,7 +66,6 @@ public class TicketingDAO extends JpaUtils {
 		return ti.getCounterBiglietti();
 	}
 	
-	
 	public static void getTitoliEmessi(int id) {
 		Ticketing ti = em.find(Ticketing.class, id);
 		
@@ -73,13 +73,13 @@ public class TicketingDAO extends JpaUtils {
 		int abbonamentiEmessi = ti.getAbbonamentiEmessi();
 		String stazione = ti.getLuogo();
 		
-		System.out.println("Sono stati emessi " + bigliettiEmessi + " biglietti e " + abbonamentiEmessi + " abbonamenti nella " + stazione);
+		System.out.println("Sono stati emessi " + bigliettiEmessi + " biglietti e " + abbonamentiEmessi +  " abbonamenti nella " + stazione);
 	}
 	
 	public static void checkDistributore(int id) {
 		Distributore d = em.find(Distributore.class, id);
 		int counter = d.getCounterBiglietti();
-		boolean inservizio = d.isInServizio();
+		boolean inServizio = d.isInServizio();
 		if(counter == 0) {
 			d.setInServizio(false);
 			t.begin();
@@ -88,7 +88,7 @@ public class TicketingDAO extends JpaUtils {
 			System.out.println("Il distributore di " + d.getLuogo() + " è fuori servizio.");
 			System.exit(0);
 		} else {
-			if (inservizio == false) {
+			if(inServizio == false) {
 				d.setInServizio(true);
 				t.begin();
 				em.persist(d);
@@ -97,6 +97,6 @@ public class TicketingDAO extends JpaUtils {
 			System.out.println("Hai scelto Stazione Tiburtina");
 			System.out.println("Benvenuto nel distributore");
 		}
-	}
+	} 
 	
 }

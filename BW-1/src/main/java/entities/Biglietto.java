@@ -29,7 +29,7 @@ public class Biglietto extends TitoloDiViaggio {
 	private Mezzo mezzo;
 	
 	public Biglietto(LocalDate dataEmissione, LocalDate dataScadenza, LocalDate vidimazione, boolean timbrato) {
-		super(dataEmissione, dataScadenza );
+		super(dataEmissione, dataScadenza);
 		this.vidimazione = vidimazione;
 		this.timbrato = timbrato;
 	}

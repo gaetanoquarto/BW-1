@@ -1,8 +1,8 @@
 package enums;
 
 public enum TappeTram {
-	
-    COLLI_PORTUENSI(7),
+
+	COLLI_PORTUENSI(7),
     SAN_GIOVANNI(12),
     GIANICOLENSE(11),
     SAN_CAMILLO(4),
@@ -13,12 +13,11 @@ public enum TappeTram {
 	private final int minuti;
 
 	TappeTram(int i) {
-
 		this.minuti = i;
 	}
 	
 	public int getMinuti() {
 		return minuti;
 	}
-
+	
 }

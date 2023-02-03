@@ -40,7 +40,6 @@ public class UtenteDAO extends JpaUtils {
 		}
 		
 		try {
-			u.setAbbonamentoattivo(true);
 			u.setAbbonamento(abbonamento);
 			
 			t.begin();

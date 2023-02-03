@@ -18,7 +18,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Tram extends Mezzo {
-	
 
 	public Tram(int capienza, boolean inServizio, Tratta tratta, String numero) {
 		super(capienza, inServizio, tratta, numero);

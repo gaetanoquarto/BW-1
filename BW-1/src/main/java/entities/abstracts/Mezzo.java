@@ -1,5 +1,7 @@
 package entities.abstracts;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -13,8 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import entities.Autobus;
-import entities.Biglietto;
 import entities.Tratta;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,24 +43,20 @@ abstract public class Mezzo {
 	
 	private String numero;
 	private int bigliettiVidimati;
-	
-	
-
+	private int nCorse;
+	private LocalDate inizioManutenzione;
+	private LocalDate fineManutenzione;
 
 	public Mezzo(int capienza, boolean inServizio, Tratta tratta, String numero) {
-		super();
 		this.capienza = capienza;
 		this.inServizio = inServizio;
 		this.tratta = tratta;
 		this.numero = numero;
-
 	}
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName().toUpperCase() + " " + numero +  " - Partenza: " + tratta.getPartenza() + " - Arrivo: " + tratta.getCapolinea();
+		return getClass().getSimpleName().toUpperCase() + " " + numero + " - Partenza: " + tratta.getPartenza() + " - Arrivo: " + tratta.getCapolinea();
 	}
-	
-	
 	
 }

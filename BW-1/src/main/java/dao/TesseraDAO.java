@@ -53,6 +53,18 @@ public class TesseraDAO extends JpaUtils {
 		} else {
 			System.out.println("La tessera è scaduta! Rinnovala!");
 		}
+		
+		try {
+			boolean validitaAbbonamento = t.getAbbonamento().isValidita();
+			if(validitaAbbonamento == true) {
+				System.out.println("Hai un abbonamento attivo che scade il " + t.getAbbonamento().getDataScadenza());
+			} else {
+				System.out.println("Non hai un abbonamento attivo!");
+			}
+		} catch (Exception e) {
+			System.out.println("Nessun abbonamento attivo!");
+		}
+
 	}
 	
 	public static void rinnovaTessera(long id) {
